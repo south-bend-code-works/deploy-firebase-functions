@@ -10,6 +10,4 @@ if [ -z "${TARGET}" ]; then
     TARGET = "default"
 fi
 
-firebase use ${TARGET}
-
-firebase deploy --token ${FIREBASE_TOKEN} --only functions
+firebase deploy --token ${FIREBASE_TOKEN} -P ${TARGET} --only functions
