@@ -20,7 +20,7 @@ name: Firebase
 on:
   push:
     branches:
-    - master
+    - <branch-id>
 jobs:
   main:
     name: Deploy
@@ -29,8 +29,8 @@ jobs:
     - name: Check out code
       uses: actions/checkout@master
     - name: Deploy to Firebase
-      uses: chrissank/deploy-firebase-functions@1.0.0
+      uses: south-bend-code-works/deploy-firebase-functions@2.0.1
       env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        TARGET: default
+        FIREBASE_TOKEN: ${{ secrets.<FIREBASE_TOKEN_NAME> }}
+        TARGET: <firebase-project-alias>
 ```
