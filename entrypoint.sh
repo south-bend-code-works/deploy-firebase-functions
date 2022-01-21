@@ -10,4 +10,6 @@ if [ -z "${TARGET}" ]; then
     TARGET = "default"
 fi
 
+npm install
+
 firebase deploy --token ${FIREBASE_TOKEN} -P ${TARGET} --only functions
