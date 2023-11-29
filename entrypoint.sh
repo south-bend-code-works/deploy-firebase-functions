@@ -10,4 +10,17 @@ if [ -z "${TARGET}" ]; then
     TARGET = "default"
 fi
 
-firebase deploy --token ${FIREBASE_TOKEN} -P ${TARGET} --only functions
+if [ -z "${WORKING_DIRECTORY}" ]; then
+    echo "WORKING_DIRECTORY is missing"
+else
+    cd ${WORKING_DIRECTORY}
+fi
+
+if [ -z "${DEPLOY_ONLY}" ]; then
+    echo "DEPLOY_ONLY is missing"
+    DEPLOY_ONLY = "functions"
+fi
+
+firebase use ${TARGET}
+
+firebase deploy --token ${FIREBASE_TOKEN} --only ${DEPLOY_ONLY}
